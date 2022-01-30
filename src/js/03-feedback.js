@@ -14,12 +14,20 @@ function setFormFields({ email, message }) {
 
 function getFieldsFromStorage() {
   try {
-    return (
-      JSON.parse(localStorage.getItem('feedback-form-state')) ?? {
+    // return (
+    //   JSON.parse(localStorage.getItem('feedback-form-state')) ?? {
+    //     email: '',
+    //     message: '',
+    //   }
+    // );
+    let result = JSON.parse(localStorage.getItem('feedback-form-state'));
+    if (!result) {
+      result = {
         email: '',
         message: '',
-      }
-    );
+      };
+    }
+    return result;
   } catch (error) {
     console.log('Set state error: ', error.message);
     return { email: '', message: '' };
