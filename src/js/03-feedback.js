@@ -14,6 +14,9 @@ function setFormFields({ email, message }) {
 
 function getFieldsFromStorage() {
   try {
+    //the follownig code was replaced to IF due to strange build error:
+    // /home/runner/work/goit-js-hw-08/goit-js-hw-08/src/js/03-feedback.js: Unexpected token: operator (?)
+    //
     // return (
     //   JSON.parse(localStorage.getItem('feedback-form-state')) ?? {
     //     email: '',
