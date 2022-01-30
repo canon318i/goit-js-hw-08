@@ -22,7 +22,3 @@ player.on(
 //     localStorage.setItem('videoplayer-current-time', Math.round(seconds));
 //   });
 // }
-
-player.getVideoTitle().then(function (title) {
-  console.log('title:', title);
-});
