@@ -15,12 +15,19 @@ player.setCurrentTime(initialTime);
 
 player.on(
   'timeupdate',
-  throttle(() => {
-    player.getCurrentTime().then(seconds => {
-      localStorage.setItem(CURRENT_TIME_ITEM_NAME, Math.round(seconds));
-    });
+  throttle(({ seconds }) => {
+    localStorage.setItem(CURRENT_TIME_ITEM_NAME, Math.round(seconds));
   }, 1000),
 );
+
+// player.on(
+//   'timeupdate',
+//   throttle(() => {
+//     player.getCurrentTime().then(seconds => {
+//       localStorage.setItem(CURRENT_TIME_ITEM_NAME, Math.round(seconds));
+//     });
+//   }, 1000),
+// );
 
 //Вариант с выносом getCurrentTime() в отдельную функцию
 // player.on('timeupdate', throttle(saveTime, 1000));
