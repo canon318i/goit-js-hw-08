@@ -57,7 +57,7 @@ function onSubmit(event) {
     return alert('Empty fields are not allowed!!!');
   }
   localStorage.removeItem(LOCAL_STORAGE_ITEM_NAME);
-  formRef.reset();
+  event.currentTarget.reset();
   console.log(formValues);
   return formValues;
 }
