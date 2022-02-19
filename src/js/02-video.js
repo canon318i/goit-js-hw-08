@@ -1,6 +1,6 @@
 import throttle from 'lodash/throttle';
-const iframe = document.querySelector('iframe');
-const player = new Vimeo.Player(iframe);
+const vimeoPlayerRef = document.querySelector('#vimeo-player');
+const player = new Vimeo.Player(vimeoPlayerRef);
 //the follownig code was replaced to IF due to strange build error:
 // /home/runner/work/goit-js-hw-08/goit-js-hw-08/src/js/03-feedback.js: Unexpected token: operator (?)
 //
