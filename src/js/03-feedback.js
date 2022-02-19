@@ -1,11 +1,10 @@
 import throttle from 'lodash/throttle';
 const formRef = document.querySelector('.feedback-form');
-const submitRef = formRef.querySelector('[type="submit"]');
 
 setFormFields(getFieldsFromStorage());
 
 formRef.addEventListener('input', throttle(onFormInput, 1000));
-submitRef.addEventListener('click', onSubmit);
+formRef.addEventListener('submit', onSubmit);
 
 function setFormFields({ email, message }) {
   formRef.elements.email.value = email;
@@ -47,12 +46,15 @@ function onFormInput() {
   );
 }
 
-function onSubmit() {
+function onSubmit(event) {
   event.preventDefault();
   const formValues = {
     email: formRef.elements.email.value,
     message: formRef.elements.message.value,
   };
+  if (!(formValues.email && formValues.message)) {
+    return alert('Empty fields are not allowed!!!');
+  }
   localStorage.removeItem('feedback-form-state');
   formRef.reset();
   console.log(formValues);
