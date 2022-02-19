@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+const LOCAL_STORAGE_ITEM_NAME = 'feedback-form-state';
 const formRef = document.querySelector('.feedback-form');
 
 setFormFields(getFieldsFromStorage());
@@ -17,12 +18,12 @@ function getFieldsFromStorage() {
     // /home/runner/work/goit-js-hw-08/goit-js-hw-08/src/js/03-feedback.js: Unexpected token: operator (?)
     //
     // return (
-    //   JSON.parse(localStorage.getItem('feedback-form-state')) ?? {
+    //   JSON.parse(localStorage.getItem(LOCAL_STORAGE_ITEM_NAME)) ?? {
     //     email: '',
     //     message: '',
     //   }
     // );
-    let result = JSON.parse(localStorage.getItem('feedback-form-state'));
+    let result = JSON.parse(localStorage.getItem(LOCAL_STORAGE_ITEM_NAME));
     if (!result) {
       result = {
         email: '',
@@ -38,7 +39,7 @@ function getFieldsFromStorage() {
 
 function onFormInput() {
   localStorage.setItem(
-    'feedback-form-state',
+    LOCAL_STORAGE_ITEM_NAME,
     JSON.stringify({
       email: formRef.elements.email.value,
       message: formRef.elements.message.value,
@@ -55,7 +56,7 @@ function onSubmit(event) {
   if (!(formValues.email && formValues.message)) {
     return alert('Empty fields are not allowed!!!');
   }
-  localStorage.removeItem('feedback-form-state');
+  localStorage.removeItem(LOCAL_STORAGE_ITEM_NAME);
   formRef.reset();
   console.log(formValues);
   return formValues;
